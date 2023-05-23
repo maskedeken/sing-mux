@@ -102,6 +102,10 @@ func (c *clientConn) Upstream() any {
 	return c.Conn
 }
 
+func (c *clientConn) NeedHandshake() bool {
+	return !c.requestWritten
+}
+
 type clientPacketConn struct {
 	N.ExtendedConn
 	destination    M.Socksaddr
